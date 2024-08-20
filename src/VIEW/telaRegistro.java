@@ -16,13 +16,16 @@ import java.sql.SQLException;
 
 public class telaRegistro {
     JFrame telaRegistro = new JFrame("Registro");
+    JPanel jpnRegistro = new JPanel();
 
     /**
      * 
      */
     public telaRegistro() {
 
-        telaRegistro.setBounds(500, 500, 500, 500);
+        telaRegistro.setBounds(500, 500, 800, 550);
+        telaRegistro.setUndecorated(true);
+
         telaRegistro.setLocationRelativeTo(null);
         telaRegistro.setDefaultCloseOperation(3);
         telaRegistro.setResizable(false);
@@ -50,6 +53,10 @@ public class telaRegistro {
         JButton botaoRegistro = new JButton("Registrar");
         botaoRegistro.setBounds(150, 355, 150, 60);
 
+        jpnRegistro.setBackground(new Color(94,100,165));
+        jpnRegistro.setBounds(400, 0, 400, 550);
+ 
+        telaRegistro.add(jpnRegistro);
         telaRegistro.add(botaoRegistro);
         telaRegistro.add(labelRegistroUsuario);
         telaRegistro.add(labelRegistroSenha);
