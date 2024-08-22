@@ -23,6 +23,8 @@ public class telaRegistro {
      */
     public telaRegistro() {
 
+
+
         telaRegistro.setBounds(500, 500, 800, 550);
         telaRegistro.setUndecorated(true);
 
@@ -62,6 +64,7 @@ public class telaRegistro {
         telaRegistro.add(labelRegistroSenha);
         telaRegistro.add(textRegistroUsuario);
         telaRegistro.add(textRegistroSenha);
+
 
         telaRegistro.setVisible(true);
 
