@@ -1,7 +1,6 @@
 package VIEW;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -18,15 +17,33 @@ import javax.swing.JTextField;
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 
-public class Interface {
+public class Interface extends JPanel {
     JLabel labelUsuario;
     JLabel labelSenha;
     JPanel jpnLogin = new JPanel();;
 
-    public Interface() {
+    Icone icone;
+
+    class Icone{
+        Image img;
+
+        Icone(Image img){
+            this.img = img;
+        }
+    }
+
+
+
+
+
+    public Interface()  {
+
+
+
         JFrame tela = new JFrame("LOGIN");
-        
-        
+
+
+
       
         tela.setBounds(500, 500, 800, 550);
         tela.setUndecorated(true);
@@ -72,7 +89,8 @@ public class Interface {
         imagemLabel.setIcon(imagemUser);;
         imagemLabel.setBounds(1, 200, 400, 400);
         imagemLabel.setVisible(true);
-        
+
+
 
         
       
@@ -132,10 +150,7 @@ public class Interface {
         
     }
 
-    public static void main(String[] args) {
 
-       primeiraTela telaP = new primeiraTela();
-        
-    }
+
 
 }
