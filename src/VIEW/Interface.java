@@ -5,46 +5,44 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.ImageIcon;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import java.util.Objects;
+import javax.swing.*;
 
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 
 public class Interface extends JPanel {
+
     JLabel labelUsuario;
     JLabel labelSenha;
     JPanel jpnLogin = new JPanel();;
 
-    Icone icone;
 
-    class Icone{
+
+    static class Icone {
+
         Image img;
-
         Icone(Image img){
             this.img = img;
         }
+
     }
 
 
 
-
+    Icone icone;
+    Image iconeTop;
 
     public Interface()  {
 
-
-
         JFrame tela = new JFrame("LOGIN");
+         iconeTop = new ImageIcon(Objects.requireNonNull(getClass().getResource("./IconeUser.png"))).getImage();
 
 
 
-      
+
+
+
         tela.setBounds(500, 500, 800, 550);
         tela.setUndecorated(true);
         tela.setLayout(null);
@@ -68,7 +66,7 @@ public class Interface extends JPanel {
 
         labelSenha.setBounds(35, 190, 250, 40);
 
-        JTextField textSenha = new JTextField();
+        JPasswordField textSenha = new JPasswordField();
         textSenha.setBounds(60, 265, 400, 40);
         textSenha.setEnabled(true);
 
@@ -84,16 +82,13 @@ public class Interface extends JPanel {
         JLabel imagemLabel = new JLabel();
         ImageIcon imagemUser = new ImageIcon("\\src\\Imagens\\IconeUser.png");
         imagemUser.setImage(imagemUser.getImage().getScaledInstance(400, 400, 300));
-    
-       
-        imagemLabel.setIcon(imagemUser);;
-        imagemLabel.setBounds(1, 200, 400, 400);
-        imagemLabel.setVisible(true);
 
 
 
-        
-      
+
+
+
+
         tela.add(botaoRegistro);
         tela.add(botaoLogin);
         tela.add(labelSenha);
@@ -102,6 +97,13 @@ public class Interface extends JPanel {
         tela.add(labelUsuario);
         tela.add(jpnLogin);
         tela.add(imagemLabel);
+        icone = new Icone(iconeTop);
+
+
+
+
+
+
         tela.setVisible(true);
 
         botaoRegistro.addActionListener(new ActionListener() {
@@ -109,10 +111,10 @@ public class Interface extends JPanel {
             public void actionPerformed(ActionEvent e){
                telaRegistro telaDeRegistro = new telaRegistro();
                tela.setVisible(false);
-               
+
      } });
 
-        
+
 
         botaoLogin.addActionListener(new ActionListener() {
             @Override
@@ -142,13 +144,31 @@ public class Interface extends JPanel {
                 } catch (SQLException erro) {
                    JOptionPane.showMessageDialog( null,"Botao login viwe" + erro);
             }
-        
+
         }
     }
-    
+
         );
-        
+
     }
+    public void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+        draw(g);
+    }
+    public void draw(Graphics g){
+
+        try{
+
+            // Icone user
+            g.drawImage(icone.img,  200 , 100, 200, 100, null);
+
+        }catch (Exception e){
+            System.out.println("aff");
+        }
+
+    }
+
 
 
 

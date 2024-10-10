@@ -46,7 +46,7 @@ public class telaRegistro {
 
         labelRegistroSenha.setBounds(35, 210, 250, 40);
 
-        JTextField textRegistroSenha = new JTextField();
+        JPasswordField textRegistroSenha = new JPasswordField();
         textRegistroSenha.setBounds(60, 285, 400, 40);
         textRegistroSenha.setEnabled(true);
 
@@ -56,12 +56,14 @@ public class telaRegistro {
         jpnRegistro.setBackground(new Color(94,100,165));
         jpnRegistro.setBounds(400, 0, 400, 550);
  
-        telaRegistro.add(jpnRegistro);
+
         telaRegistro.add(botaoRegistro);
         telaRegistro.add(labelRegistroUsuario);
         telaRegistro.add(labelRegistroSenha);
         telaRegistro.add(textRegistroUsuario);
+
         telaRegistro.add(textRegistroSenha);
+        telaRegistro.add(jpnRegistro);
 
         telaRegistro.setVisible(true);
 
