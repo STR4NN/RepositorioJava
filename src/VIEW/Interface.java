@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.util.Objects;
 import javax.swing.*;
 
+import DAO.FuncionarioDAO;
 import DAO.UsuarioDAO;
+import DTO.FuncionarioDTO;
 import DTO.UsuarioDTO;
 
 public class Interface extends JPanel {
@@ -84,11 +86,12 @@ public class Interface extends JPanel {
         imagemUser.setImage(imagemUser.getImage().getScaledInstance(400, 400, 300));
 
 
+        JCheckBox checkBoxFuncionario = new JCheckBox("Funcionario?");
+        checkBoxFuncionario.setBounds(170, 455, 100, 50);
 
 
 
-
-
+        tela.add(checkBoxFuncionario);
         tela.add(botaoRegistro);
         tela.add(botaoLogin);
         tela.add(labelSenha);
@@ -121,25 +124,51 @@ public class Interface extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    String nome_usuario, senha_usuario;
+                    if (checkBoxFuncionario.isSelected()) {
+                        String nome_funcionario, senha_funcionario;
 
-                    nome_usuario = textUsuario.getText();
-                    senha_usuario = textSenha.getText();
+                        nome_funcionario = textUsuario.getText();
+                        senha_funcionario = textSenha.getText();
 
-                    UsuarioDTO objUsuarioDTO = new UsuarioDTO();
 
-                    objUsuarioDTO.setNome_usuario(nome_usuario);
-                    objUsuarioDTO.setSenha_usuario(senha_usuario);
 
-                    UsuarioDAO objusuarioDAO = new UsuarioDAO();
-                    ResultSet rsusuarioDAO = objusuarioDAO.autenticacaoUsuario(objUsuarioDTO);
+                        FuncionarioDTO objFuncionarioDTO = new FuncionarioDTO();
 
-                    if (rsusuarioDAO.next()) {
-                        JOptionPane.showMessageDialog(null, "Entrou no APP");
-                        // chamar tela q eu quero abrir
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos");
-                        //enviar mensagem dizendo incorreto
+                        objFuncionarioDTO.setNome_funcionario(nome_funcionario);
+                        objFuncionarioDTO.setSenha_funcionario(senha_funcionario);
+
+                        FuncionarioDAO objfuncionarioDAO = new FuncionarioDAO();
+                        ResultSet rsFuncionarioDAO = objfuncionarioDAO.autenticacaoFuncionario(objFuncionarioDTO);
+
+                        if (rsFuncionarioDAO.next()) {
+                            JOptionPane.showMessageDialog(null, "Entrou no APP como funcionario");
+                            // chamar tela q eu quero abrir
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Usuario ou senha dos funcionarios incorretos");
+                            //enviar mensagem dizendo incorreto
+                        }
+                    }
+                    else {
+                        String nome_usuario, senha_usuario;
+
+                        nome_usuario = textUsuario.getText();
+                        senha_usuario = textSenha.getText();
+
+                        UsuarioDTO objUsuarioDTO = new UsuarioDTO();
+
+                        objUsuarioDTO.setNome_usuario(nome_usuario);
+                        objUsuarioDTO.setSenha_usuario(senha_usuario);
+
+                        UsuarioDAO objusuarioDAO = new UsuarioDAO();
+                        ResultSet rsusuarioDAO = objusuarioDAO.autenticacaoUsuario(objUsuarioDTO);
+
+                        if (rsusuarioDAO.next()) {
+                            JOptionPane.showMessageDialog(null, "Entrou no APP");
+                            // chamar tela q eu quero abrir
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos");
+                            //enviar mensagem dizendo incorreto
+                        }
                     }
                 } catch (SQLException erro) {
                    JOptionPane.showMessageDialog( null,"Botao login viwe" + erro);

@@ -4,13 +4,17 @@ public class UsuarioDTO {
         private int Id_usuario;
         private String Nome_usuario;
         private String Senha_usuario;
+
+
         
         public String getNomeRegistro_usuario() {
+
             return NomeRegistro_usuario;
         }
         public void setNomeRegistro_usuario(String nomeRegistro_usuario) {
             NomeRegistro_usuario = nomeRegistro_usuario;
         }
+
         public String getSenhaRegistro_usuario() {
             return SenhaRegistro_usuario;
         }

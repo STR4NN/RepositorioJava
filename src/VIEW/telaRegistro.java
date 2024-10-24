@@ -44,28 +44,43 @@ public class telaRegistro {
         labelRegistroSenha.setText("Senha: ");
         labelRegistroSenha.setFont(new Font("Verdana", Font.BOLD, 25));
 
-        labelRegistroSenha.setBounds(35, 210, 250, 40);
+        labelRegistroSenha.setBounds(35, 160, 250, 40);
 
         JPasswordField textRegistroSenha = new JPasswordField();
-        textRegistroSenha.setBounds(60, 285, 400, 40);
+        textRegistroSenha.setBounds(60, 235, 400, 40);
         textRegistroSenha.setEnabled(true);
+
 
         JButton botaoRegistro = new JButton("Registrar");
         botaoRegistro.setBounds(150, 355, 150, 60);
 
+        JButton botaoRegistroFuncionario = new JButton("Registro Funcionario");
+        botaoRegistroFuncionario.setBounds(150, 425, 150, 60);
+
         jpnRegistro.setBackground(new Color(94,100,165));
         jpnRegistro.setBounds(400, 0, 400, 550);
- 
 
+
+ 
+        // Register Button NORMAL / FUNCIONARIO
         telaRegistro.add(botaoRegistro);
+        telaRegistro.add(botaoRegistroFuncionario);
+
+        //Register Elements User
         telaRegistro.add(labelRegistroUsuario);
         telaRegistro.add(labelRegistroSenha);
-        telaRegistro.add(textRegistroUsuario);
 
+        // Register Elements Password
+        telaRegistro.add(textRegistroUsuario);
         telaRegistro.add(textRegistroSenha);
+
+        //Design Half Screen other color
         telaRegistro.add(jpnRegistro);
 
+        // Turn  all modifies and Screens Visible
         telaRegistro.setVisible(true);
+
+
 
         botaoRegistro.addActionListener(new ActionListener() {
             @Override
@@ -85,7 +100,7 @@ public class telaRegistro {
                     UsuarioDAO objusuarioDAO = new UsuarioDAO();
                     objusuarioDAO.RegistrarUsuario(objNovoUsuarioDTO);
 
-                    if (objusuarioDAO.RegistrarUsuario(objNovoUsuarioDTO) == true) {
+                    if (objusuarioDAO.RegistrarUsuario(objNovoUsuarioDTO)) {
                         JOptionPane.showMessageDialog(null, "REGISTROU");
                         Interface telaInicial = new Interface();
                         
@@ -96,8 +111,19 @@ public class telaRegistro {
                     }
 
                 } finally {
-                    System.out.println("FINALLY");
+                    System.out.println("Registro Funcional");
                 }
+            }
+        });
+
+        botaoRegistroFuncionario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            telaRegistroFuncionario telaRegistroFunc = new telaRegistroFuncionario();
+            telaRegistro.setVisible(false);
+
+
             }
         });
     }

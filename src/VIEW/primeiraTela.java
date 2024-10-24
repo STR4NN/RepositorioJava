@@ -50,6 +50,8 @@ public class primeiraTela {
             btLogin.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+
+                    telaInicial1.setVisible(false);
                     Interface telaLogin = new Interface();
                 }
             });
@@ -58,7 +60,17 @@ public class primeiraTela {
             btRegistro.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+
+                    telaInicial1.setVisible(false);
                     telaRegistro telaDoRegistro = new telaRegistro();
+                }
+            });
+
+            btCardapio.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    telaInicial1.setVisible(false);
+
                 }
             });
             telaInicial1.add(btLogin);
